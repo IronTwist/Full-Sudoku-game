@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <style type="text/css">
+        body {
+            margin-top: 10px;
+            margin-left: 100px;
+            background-color: yellow;
+        }
+        
+        .btn {
+            box-shadow: 2px 2px rgba(0, 0, 7, 0.306);
+            width: 180px;
+            height: 50px;
+            border: 3px solid blue;
+            border-radius: 15px;
+        }
+        
+        #inputText {
+            font-size: 24px;
+            width: 300px;
+            height: 50px;
+            margin-right: 10px;
+        }
+        
+        .square {
+            border: 1px solid black;
+            padding: 2px;
+        }
+        
+        .box {
+            width: 50px;
+            height: 50px;
+            font-size: 25px;
+            text-align: center;
+        }
+        
+        div.row {
+            width: 508px;
+        }
+        
+        .row:nth-child(4),
+        .row:nth-child(5),
+        .row:nth-child(6) {
+            background-color: black;
+        }
+        
+        .row:nth-child(1)>.square:nth-child(4),
+        .row:nth-child(1)>.square:nth-child(5),
+        .row:nth-child(1)>.square:nth-child(6),
+        .row:nth-child(2)>.square:nth-child(4),
+        .row:nth-child(2)>.square:nth-child(5),
+        .row:nth-child(2)>.square:nth-child(6),
+        .row:nth-child(3)>.square:nth-child(4),
+        .row:nth-child(3)>.square:nth-child(5),
+        .row:nth-child(3)>.square:nth-child(6) {
+            background-color: black;
+        }
+        
+        .row:nth-child(7)>.square:nth-child(4),
+        .row:nth-child(7)>.square:nth-child(5),
+        .row:nth-child(7)>.square:nth-child(6),
+        .row:nth-child(8)>.square:nth-child(4),
+        .row:nth-child(8)>.square:nth-child(5),
+        .row:nth-child(8)>.square:nth-child(6),
+        .row:nth-child(9)>.square:nth-child(4),
+        .row:nth-child(9)>.square:nth-child(5),
+        .row:nth-child(9)>.square:nth-child(6) {
+            background-color: black;
+        }
+        
+        .timeCount {
+            display: block;
+            width: 200px;
+            font-size: 25px;
+            font-weight: bold;
+            border: 4px solid black;
+            padding-left: 15px;
+            background-color: green;
+            color: white;
+            margin-bottom: 10px;
+        }
+        
+        #ans {
+            width: 400px;
+            font-size: 25px;
+            font-weight: bold;
+            border: 4px solid black;
+            margin-top: 10px;
+            padding-left: 10px;
+        }
+        
+        h1 {
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Full Sudoku</h1>
+    <div id="timeCount" class="timeCount">Timp: </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="square col-xs-1">
+                <input id="box11" class="box" type="text" value="">
+            </div>
+            <div class="square col-xs-1.33">
+                <input id="box12" class="box" type="text" value="">
+            </div>
+            <div class="square col-xs-1.33">
+                <input id="box13" class="box" type="text" value="">
+            </div>
+            <div class="square col-xs-1.33">
+                <input id="box14" class="box" type="text" value="">
+            </div>
+            <div class="square col-xs-1.33">
+                <input id="box15" class="box" type="text" value="">
+            </div>
+            <div class="square col-xs-1.33">
+                <input id="box16" class="box" type="text" value="">
+            </div>
+            <div class="square col-xs-1.33">
+                <input id="box17" class="box" type="text" value="">
+            </div>
+            <div class="square col-xs-1.33">
+                <input id="box18" class="box" type="text" value="">
+            </div>
+            <div class="square col-xs-1.33">
+                <input id="box19" class="box" type="text" value="">
+            </div>
+        </div>
+        <div class="row">
+            <div class="square col-xs-1.33">
+                <input id="box21" class="box" type="text" value="">
+            </div>
+            <div class="square col-xs-1.33">
+                <input id="box22" class="box" type="text" value="">
+            </div>
+            <div class="square col-xs-1.33">
+                <input id="box23" class="box" type="text" value="">
+            </div>
+            <div class="square col-xs-1.33">
+                <input id="box24" class="box" type="text" value="">
+            </div>
+            <div class="square col-xs-1.33">
+                <input id="box25" class="box" type="text" value="">
+            </div>
+            <div class="square col-xs-1.33">
+                <input id="box26" class="box" type="text" value="">
+            </div>
+            <div class="square col-xs-1.33">
+                <input id="box27" class="box" type="text" value="">
+            </div>
+            <div class="square col-xs-1.33">
+                <input id="box28" class="box" type="text" value="">
+            </div>
+            <div class="square col-xs-1.33">
+                <input id="box29" class="box" type="text" value="">
+            </div>
+        </div>
+        <div class="row">
+            <div class="square col-xs-1.33">
+                <input id="box31" class="box" type="text" value="">
+            </div>
+            <div class="square col-xs-1.33">
+                <input id="box32" class="box" type="text" value="">
+            </div>
+            <div class="square col-xs-1.33">
+                <input id="box33" class="box" type="text" value="">
+            </div>
+            <div class="square col-xs-1.33">
+                <input id="box34" class="box" type="text" value="">
+            </div>
+            <div class="square col-xs-1.33">
+                <input id="box35" class="box" type="text" value="">
+            </div>
+            <div class="square col-xs-1.33">
+                <input id="box36" class="box" type="text" value="">
+            </div>
+            <div class="square col-xs-1.33">
+                <input id="box37" class="box" type="text" value="">
+            </div>
+            <div class="square col-xs-1.33">
+                <input id="box38" class="box" type="text" value="">
+            </div>
+            <div class="square col-xs-1.33">
+                <input id="box39" class="box" type="text" value="">
+            </div>
+        </div>
+        <div class="row">
+            <div class="square col-xs-1.33">
+                <input id="box41" class="box" type="text" value="">
+            </div>
+            <div class="square col-xs-1.33">
+                <input id="box42" class="box" type="text" value="">
+            </div>
+            <div class="square col-xs-1.33">
+                <input id="box43" class="box" type="text" value="">
+            </div>
+            <div class="square col-xs-1.33">
+                <input id="box44" class="box" type="text" value="">
+            </div>
+            <div class="square col-xs-1.33">
+                <input id="box45" class="box" type="text" value="">
+            </div>
+            <div class="square col-xs-1.33">
+                <input id="box46" class="box" type="text" value="">
+            </div>
+            <div class="square col-xs-1.33">
+                <input id="box47" class="box" type="text" value="">
+            </div>
+            <div class="square col-xs-1.33">
+                <input id="box48" class="box" type="text" value="">
+            </div>
+            <div class="square col-xs-1.33">
+                <input id="box49" class="box" type="text" value="">
+            </div>
+        </div>
+        <div class="row">
+            <div class="square col-xs-1.33">
+                <input id="box51" class="box" type="text" value="">
+            </div>
+            <div class="square col-xs-1.33">
+                <input id="box52" class="box" type="text" value="">
+            </div>
+            <div class="square col-xs-1.33">
+                <input id="box53" class="box" type="text" value="">
+            </div>
+            <div class="square col-xs-1.33">
+                <input id="box54" class="box" type="text" value="">
+            </div>
+            <div class="square col-xs-1.33">
+                <input id="box55" class="box" type="text" value="">
+            </div>
+            <div class="square col-xs-1.33">
+                <input id="box56" class="box" type="text" value="">
+            </div>
+            <div class="square col-xs-1.33">
+                <input id="box57" class="box" type="text" value="">
+            </div>
+            <div class="square col-xs-1.33">
+                <input id="box58" class="box" type="text" value="">
+            </div>
+            <div class="square col-xs-1.33">
+                <input id="box59" class="box" type="text" value="">
+            </div>
+        </div>
+        <div class="row">
+            <div class="square col-xs-1.33">
+                <input id="box61" class="box" type="text" value="">
+            </div>
+            <div class="square col-xs-1.33">
+                <input id="box62" class="box" type="text" value="">
+            </div>
+            <div class="square col-xs-1.33">
+                <input id="box63" class="box" type="text" value="">
+            </div>
+            <div class="square col-xs-1.33">
+                <input id="box64" class="box" type="text" value="">
+            </div>
+            <div class="square col-xs-1.33">
+                <input id="box65" class="box" type="text" value="">
+            </div>
+            <div class="square col-xs-1.33">
+                <input id="box66" class="box" type="text" value="">
+            </div>
+            <div class="square col-xs-1.33">
+                <input id="box67" class="box" type="text" value="">
+            </div>
+            <div class="square col-xs-1.33">
+                <input id="box68" class="box" type="text" value="">
+            </div>
+            <div class="square col-xs-1.33">
+                <input id="box69" class="box" type="text" value="">
+            </div>
+        </div>
+        <div class="row">
+            <div class="square col-xs-1.33">
+                <input id="box71" class="box" type="text" value="">
+            </div>
+            <div class="square col-xs-1.33">
+                <input id="box72" class="box" type="text" value="">
+            </div>
+            <div class="square col-xs-1.33">
+                <input id="box73" class="box" type="text" value="">
+            </div>
+            <div class="square col-xs-1.33">
+                <input id="box74" class="box" type="text" value="">
+            </div>
+            <div class="square col-xs-1.33">
+                <input id="box75" class="box" type="text" value="">
+            </div>
+            <div class="square col-xs-1.33">
+                <input id="box76" class="box" type="text" value="">
+            </div>
+            <div class="square col-xs-1.33">
+                <input id="box77" class="box" type="text" value="">
+            </div>
+            <div class="square col-xs-1.33">
+                <input id="box78" class="box" type="text" value="">
+            </div>
+            <div class="square col-xs-1.33">
+                <input id="box79" class="box" type="text" value="">
+            </div>
+        </div>
+        <div class="row">
+            <div class="square col-xs-1.33">
+                <input id="box81" class="box" type="text" value="">
+            </div>
+            <div class="square col-xs-1.33">
+                <input id="box82" class="box" type="text" value="">
+            </div>
+            <div class="square col-xs-1.33">
+                <input id="box83" class="box" type="text" value="">
+            </div>
+            <div class="square col-xs-1.33">
+                <input id="box84" class="box" type="text" value="">
+            </div>
+            <div class="square col-xs-1.33">
+                <input id="box85" class="box" type="text" value="">
+            </div>
+            <div class="square col-xs-1.33">
+                <input id="box86" class="box" type="text" value="">
+            </div>
+            <div class="square col-xs-1.33">
+                <input id="box87" class="box" type="text" value="">
+            </div>
+            <div class="square col-xs-1.33">
+                <input id="box88" class="box" type="text" value="">
+            </div>
+            <div class="square col-xs-1.33">
+                <input id="box89" class="box" type="text" value="">
+            </div>
+        </div>
+        <div class="row">
+            <div class="square col-xs-1.33">
+                <input id="box91" class="box" type="text" value="">
+            </div>
+            <div class="square col-xs-1.33">
+                <input id="box92" class="box" type="text" value="">
+            </div>
+            <div class="square col-xs-1.33">
+                <input id="box93" class="box" type="text" value="">
+            </div>
+            <div class="square col-xs-1.33">
+                <input id="box94" class="box" type="text" value="">
+            </div>
+            <div class="square col-xs-1.33">
+                <input id="box95" class="box" type="text" value="">
+            </div>
+            <div class="square col-xs-1.33">
+                <input id="box96" class="box" type="text" value="">
+            </div>
+            <div class="square col-xs-1.33">
+                <input id="box97" class="box" type="text" value="">
+            </div>
+            <div class="square col-xs-1.33">
+                <input id="box98" class="box" type="text" value="">
+            </div>
+            <div class="square col-xs-1.33">
+                <input id="box99" class="box" type="text" value="">
+            </div>
+        </div>
+        <div id="ans"></div>
+    </div>
+
+    <script>
+        //Javascript aici
+        let lastRenderTime = 0;
+
+        var timer;
+
+        function startTimer(duration, display) {
+            timer = duration;
+            var minutes, seconds;
+            setInterval(function() {
+                minutes = parseInt(timer / 60, 10)
+                seconds = parseInt(timer % 60, 10);
+
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                display.innerHTML = "Timp: " + minutes + ":" + seconds;
+
+                if (timer++ < 0) {
+                    timer = duration;
+                }
+            }, 1000);
+        }
+
+        function resetTimer() {
+            timer = 0;
+        }
+
+        function main(currentTime) {
+
+            window.requestAnimationFrame(main)
+            const secondsSinceLastRender = (currentTime - lastRenderTime) / 1000 //pentru a afla cate secunde au trecut
+                // console.log("Ruleaza");
+            lastRenderTime = currentTime
+            var secundeCumulate = parseInt(lastRenderTime / 1000);
+            var minute = parseInt(secundeCumulate / 60);
+
+            update();
+
+
+        }
+
+        window.requestAnimationFrame(main)
+        startTimer(1, document.getElementById("timeCount"));
+
+        //------------------------------------suma linie
+        function sumaLinie(numar) {
+            var suma = 0;
+
+            var linie = "box" + numar;
+
+            var valoare1 = parseInt(document.getElementById(linie + "1").value);
+            var valoare2 = parseInt(document.getElementById(linie + "2").value);
+            var valoare3 = parseInt(document.getElementById(linie + "3").value);
+            var valoare4 = parseInt(document.getElementById(linie + "4").value);
+            var valoare5 = parseInt(document.getElementById(linie + "5").value);
+            var valoare6 = parseInt(document.getElementById(linie + "6").value);
+            var valoare7 = parseInt(document.getElementById(linie + "7").value);
+            var valoare8 = parseInt(document.getElementById(linie + "8").value);
+            var valoare9 = parseInt(document.getElementById(linie + "9").value)
+            if (
+                Number.isInteger(valoare1) &&
+                Number.isInteger(valoare2) &&
+                Number.isInteger(valoare3) &&
+                Number.isInteger(valoare4) &&
+                Number.isInteger(valoare5) &&
+                Number.isInteger(valoare6) &&
+                Number.isInteger(valoare7) &&
+                Number.isInteger(valoare8) &&
+                Number.isInteger(valoare9)
+
+            ) {
+
+                suma += valoare1;
+                suma += valoare2;
+                suma += valoare3;
+                suma += valoare4;
+                suma += valoare5;
+                suma += valoare6;
+                suma += valoare7;
+                suma += valoare8;
+                suma += valoare9;
+
+            }
+
+            if (suma == 45) {
+                coloreazaLinie(numar, true);
+                return true;
+            } else {
+                coloreazaLinie(numar, false);
+                return false;
+            }
+
+
+        }
+        //--------------suma coloana
+        function sumaColoana(numar) {
+            let box = "box";
+            let suma = 0;
+
+            let valoare1 = parseInt(document.getElementById(box + "1" + numar).value);
+            let valoare2 = parseInt(document.getElementById(box + "2" + numar).value);
+            let valoare3 = parseInt(document.getElementById(box + "3" + numar).value);
+            let valoare4 = parseInt(document.getElementById(box + "4" + numar).value);
+            let valoare5 = parseInt(document.getElementById(box + "5" + numar).value);
+            let valoare6 = parseInt(document.getElementById(box + "6" + numar).value);
+            let valoare7 = parseInt(document.getElementById(box + "7" + numar).value);
+            let valoare8 = parseInt(document.getElementById(box + "8" + numar).value);
+            let valoare9 = parseInt(document.getElementById(box + "9" + numar).value);
+
+            {
+
+                suma += valoare1;
+                suma += valoare2;
+                suma += valoare3;
+                suma += valoare4;
+                suma += valoare5;
+                suma += valoare6;
+                suma += valoare7;
+                suma += valoare8;
+                suma += valoare9;
+
+            }
+
+            if (suma === 45) {
+                coloreazaColoana(numar, true);
+                return true;
+            } else {
+                coloreazaColoana(numar, false);
+                return false;
+            }
+        }
+        //------coloreaza linie
+        function coloreazaLinie(numar, status) {
+            if (status == true) {
+                for (let i = 1; i < 10; i++) {
+                    var ales = parseInt(numar + "" + i);
+                    coloreazaPatrat(ales, "blue", "white");
+                }
+            } else {
+                for (let i = 1; i < 10; i++) {
+                    var ales = parseInt(numar + "" + i);
+                    coloreazaPatrat(ales, "white", "black");
+                }
+            }
+        }
+        //coloreaza coloana
+        function coloreazaColoana(numar, status) {
+
+            if (status == true) {
+                for (let i = 1; i < 10; i++) {
+                    var ales = parseInt(i + "" + numar);
+                    coloreazaPatrat(ales, "blue", "white");
+                }
+            } else {
+                for (let i = 1; i < 10; i++) {
+                    var ales = parseInt(i + "" + numar);
+                    coloreazaPatrat(ales, "white", "black");
+                }
+            }
+
+        }
+        //UPDATE
+        function update() {
+            console.log("Programul ruleaza");
+
+            if (
+                sumaLinie(1) == true && sumaColoana(1) == true &&
+                sumaLinie(2) == true && sumaColoana(2) == true &&
+                sumaLinie(3) == true && sumaColoana(3) == true &&
+                sumaLinie(4) == true && sumaColoana(4) == true &&
+                sumaLinie(5) == true && sumaColoana(5) == true &&
+                sumaLinie(6) == true && sumaColoana(6) == true &&
+                sumaLinie(7) == true && sumaColoana(7) == true &&
+                sumaLinie(8) == true && sumaColoana(8) == true &&
+                sumaLinie(9) == true && sumaColoana(9) == true
+            ) {
+
+                document.getElementById("ans").innerHTML = "Felicitari ai castigat!";
+            } else {
+                document.getElementById("ans").innerHTML = "Acest Sudoku este incomplet";
+
+            }
+        }
+
+        //coloreaza patrat
+        function coloreazaPatrat(patrat, culoare, culoareText) {
+            var nrPatrat = "box" + patrat;
+            var rand = document.getElementById(nrPatrat);
+            var patrat = rand.getElementsByClassName("square");
+            rand.style.backgroundColor = culoare;
+            rand.style.color = culoareText;
+        }
+    </script>
+
+
+    <script>
+        //jQuery
+        $(document).ready(function() {
+
+
+        });
+    </script>
+</body>
+
+</html>
